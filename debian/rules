@@ -145,7 +145,7 @@ binary-indep: build install
 
 	dh_install -i --sourcedir=$(DESTDIR)
 	dh_installdocs -i
-	dh_installchangelogs -i www/changes.html
+	# dh_installchangelogs -i www/changes.html
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
@@ -160,7 +160,7 @@ binary-arch: build install
 	dh_install -a --sourcedir=$(DESTDIR)
 	dh_installman -a
 	dh_installdocs -a
-	dh_installchangelogs -a www/changes.html
+	# dh_installchangelogs -a www/changes.html
 	dh_strip -a
 	dh_compress -a
 	dh_fixperms -a
