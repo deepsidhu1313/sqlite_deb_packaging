@@ -1,3 +1,9 @@
+sqlite3 (3.35.0) UNRELEASED; urgency=medium
+
+  * Nightly build
+
+ -- Navdeep <linuxgndu@gmail.com>  Sat, 13 March 2021 10:05:22 -0500
+
 sqlite3 (3.31.1-4ubuntu0.2) focal-security; urgency=medium
 
   * SECURITY UPDATE: multiSelectOrderBy heap overflow
@@ -1213,7 +1219,7 @@ sqlite3 (3.6.11-2) unstable; urgency=low
   * Fix ordering in "make install" (closes: #520153).
   * Link libsqlite3.so with libdl (closes: #520466).
   * Prune transitive dependencies from .la files (closes: #520478).
-  * Tweak ICU linkage to eliminate dpkg-shlibdeps complaints (closes: #521082). 
+  * Tweak ICU linkage to eliminate dpkg-shlibdeps complaints (closes: #521082).
 
  -- Laszlo Boszormenyi (GCS) <gcs@debian.hu>  Thu, 26 Mar 2009 20:12:02 +0000
 
@@ -1545,19 +1551,19 @@ sqlite3 (3.0.8-2) unstable; urgency=low
   * libsqlite3-dev: Suggest sqlite3-doc instead of sqlite-doc (closes:
     #285771).
   * libsqlite3-0: Don't Pre-Depend on debconf (closes: #284976).
-  * sqlite3-doc: Now comes with sqlite.gif and links to 
+  * sqlite3-doc: Now comes with sqlite.gif and links to
     http://sqlite.org/contrib instead of locally (closes: #285769).
-  
+
  -- Andreas Rottmann <rotty@debian.org>  Thu, 16 Dec 2004 12:24:02 +0100
-  
+
 sqlite3 (3.0.8-1) unstable; urgency=low
 
   * Initial release of SQLite3 (closes: #272271, #282351).
-    - Now packaged as a new source package, since SQLite 3 
+    - Now packaged as a new source package, since SQLite 3
       is incompatible (database- and API-wise) with SQLite 2.
     - Remove debian/lemon.html, this is now shipped by upstream in doc/.
     - Adapted manpage for 3.0 (thanks to Laszlo 'GCS' Boszormeny).
-  
+
  -- Andreas Rottmann <rotty@debian.org>  Sun,  7 Nov 2004 13:49:52 +0100
 sqlite3 (3.5.8-3) unstable; urgency=low
 
