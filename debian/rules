@@ -142,7 +142,7 @@ binary-indep: build install
 	dh_testroot
 
 	dh_install -i --sourcedir=$(DESTDIR)
-	dh_installdocs -i
+	dh_installdocs --sourcedir=../www -i
 	lynx -dump -nolist www/changes.html >changelog
 	dh_installchangelogs -i www/changes.html changelog
 	rm changelog
@@ -159,7 +159,7 @@ binary-arch: build install
 
 	dh_install -a --sourcedir=$(DESTDIR)
 	dh_installman -a
-	dh_installdocs -a
+	dh_installdocs --sourcedir=../www -a
 	lynx -dump -nolist www/changes.html >changelog
 	dh_installchangelogs -a www/changes.html changelog
 	rm changelog
