@@ -4,7 +4,7 @@ sqlite3 (3.36.0-3) UNRELEASED; urgency=medium
 
  -- Navdeep <linuxgndu@gmail.com>  Sat, 11 Dec 2021 10:05:22 -0500
 
- sqlite3 (3.36.0-2) unstable; urgency=high
+sqlite3 (3.36.0-2) unstable; urgency=high
 
   * Upload to unstable.
   * Backport upstream security fix for CVE-2021-36690: segmentation fault
