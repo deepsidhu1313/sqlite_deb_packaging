@@ -1,8 +1,8 @@
-sqlite3 (3.36.0-3) UNRELEASED; urgency=medium
+sqlite3 (3.36.0-3) UNRELEASED; urgency=high
 
-  * Nightly build
+  * nightly release
 
- -- Navdeep <linuxgndu@gmail.com>  Sat, 11 Dec 2021 10:05:22 -0500
+ -- Navdeep <linuxgndu@gmail.com>  Fri, 10 Dec 2021 20:50:05 -0600
 
 sqlite3 (3.36.0-2) unstable; urgency=high
 
