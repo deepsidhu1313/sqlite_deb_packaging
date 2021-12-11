@@ -73,7 +73,7 @@ function div_off(nm){document.getElementById(nm).style.display="none";}
 window.onbeforeunload = function(e){div_off("submenu");}
 /* Disable the Search feature if we are not operating from CGI, since */
 /* Search is accomplished using CGI and will not work without it. */
-if( !location.origin.match || !location.origin.match(/http/) ){
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
 document.getElementById("search_menubutton").style.display = "none";
 }
 /* Used by the Hide/Show button beside syntax diagrams, to toggle the */
@@ -167,8 +167,8 @@ future versions of SQLite to perform even better.
 depending on hardware, operating system, and the
 details of the experiment, and due to random performance fluctuations
 on real-world hardware.  See the text below for more detail.
-Try the experiments yourself.  Report significant deviations to
-the <a href="support.html#mailinglists">mailing lists</a>.
+Try the experiments yourself.  Report significant deviations on
+the <a href="support.html#fx">SQLite forum</a>.
 </p>
 
 <p>

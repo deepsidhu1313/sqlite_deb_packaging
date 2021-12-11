@@ -73,7 +73,7 @@ function div_off(nm){document.getElementById(nm).style.display="none";}
 window.onbeforeunload = function(e){div_off("submenu");}
 /* Disable the Search feature if we are not operating from CGI, since */
 /* Search is accomplished using CGI and will not work without it. */
-if( !location.origin.match || !location.origin.match(/http/) ){
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
 document.getElementById("search_menubutton").style.display = "none";
 }
 /* Used by the Hide/Show button beside syntax diagrams, to toggle the */
@@ -146,6 +146,7 @@ non-deterministic functions:
 <li>In the expression of a <a href="lang_createtable.html#ckconst">CHECK constraint</a>.
 </li><li>In the WHERE clause of a <a href="partialindex.html">partial index</a>.
 </li><li>In an expression used as part of an <a href="expridx.html">expression index</a>.
+</li><li>In the expression of a <a href="gencol.html">generated column</a>.
 </li></ul>
 
 <p>
@@ -179,6 +180,27 @@ Prior to SQLite 3.20.0 (2017-08-01) all date/time functions were
 always considered non-deterministic.  The ability for date/time functions
 to be deterministic sometimes and non-deterministic at other times,
 depending on their arguments, was added for the 3.20.0 release.
+
+</p><h2 id="bug_fix_in_version_3_35_2"><span>3.1. </span>Bug fix in version 3.35.2</h2>
+
+<p>
+When the enhancement was made to SQLite 3.20.0 such that date/time
+functions would be considered deterministic as they do not depend
+on the current time, one case was overlooked:
+Many of the date/time functions can be called
+with no arguments at all.  These no-argument date/time functions
+behave as if they had a single "<tt>'now'</tt>" argument.
+Thus "<tt>datetime()</tt>" and
+"<tt>datetime('now')</tt>" both yield the current date and time.
+However, only the second form was recognized as non-deterministic.
+This meant that developers could sneak the non-deterministic
+"<tt>datetime()</tt>" form into CHECK constraints, index
+expressions, generated column expressions, and similar places
+where non-deterministic functions make no sense.
+This oversight was fixed in version 3.35.2 (2021-03-17).
+However, there may be legacy databases in circulation that were created
+by SQLite version 3.20.0 through 3.35.1 that have non-deterministic
+date/time functions in their schemas.
 
 </p><h1 id="application_defined_deterministic_functions"><span>4. </span>Application-defined deterministic functions</h1>
 

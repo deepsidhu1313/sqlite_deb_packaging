@@ -1,56 +1,139 @@
-sqlite3 (3.35.0) UNRELEASED; urgency=medium
+sqlite3 (3.36.0-3) UNRELEASED; urgency=medium
 
   * Nightly build
 
- -- Navdeep <linuxgndu@gmail.com>  Sat, 13 March 2021 10:05:22 -0500
+ -- Navdeep <linuxgndu@gmail.com>  Sat, 11 Dec 2021 10:05:22 -0500
 
-sqlite3 (3.31.1-4ubuntu0.2) focal-security; urgency=medium
+ sqlite3 (3.36.0-2) unstable; urgency=high
 
-  * SECURITY UPDATE: multiSelectOrderBy heap overflow
-    - debian/patches/CVE-2020-15358.patch: fix defect in the
-      query-flattener optimization in src/select.c, src/sqliteInt.h,
-      test/selectA.test.
-    - CVE-2020-15358
+  * Upload to unstable.
+  * Backport upstream security fix for CVE-2021-36690: segmentation fault
+    vulnerability with the Expert extension when a column has no collating
+    sequence.
 
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 23 Jul 2020 13:36:13 -0400
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 25 Aug 2021 13:04:34 +0200
 
-sqlite3 (3.31.1-4ubuntu0.1) focal-security; urgency=medium
+sqlite3 (3.36.0-1) experimental; urgency=medium
 
-  * SECURITY UPDATE: DoS via malformed window-function query
-    - debian/patches/CVE-2020-11655-2.patch: in the event of error,
-      early-out in src/select.c, test/window1.test.
-    - debian/patches/CVE-2020-11655-3.patch: do not suppress errors when
-      resolving references in src/resolve.c, test/altertab.test.
-    - CVE-2020-11655
-  * SECURITY UPDATE: integer overflow in sqlite3_str_vappendf
-    - debian/patches/CVE-2020-13434.patch: limit the "precision" of
-      floating-point to text conversions in src/printf.c, test/printf.test.
-    - CVE-2020-13434
-  * SECURITY UPDATE: segmentation fault in sqlite3ExprCodeTarget
-    - debian/patches/CVE-2020-13435-pre1.patch: move some utility Walker
-      callbacks in src/expr.c, src/select.c, src/sqliteInt.h,
-      src/walker.c.
-    - debian/patches/CVE-2020-13435-1.patch: be sure to adjust the Expr.op2
-      field appropriately in src/resolve.c, src/window.c,
-      test/window1.test.
-    - debian/patches/CVE-2020-13435-2.patch: add defensive code in
-      src/expr.c.
-    - CVE-2020-13435
-  * SECURITY UPDATE: use-after-free in fts3EvalNextRow
-    - debian/patches/CVE-2020-13630.patch: add fix to ext/fts3/fts3.c,
-      test/fts3snippet.test.
-    - CVE-2020-13630
-  * SECURITY UPDATE: virtual table rename issue
-    - debian/patches/CVE-2020-13631.patch: do not allow a virtual table to
-      be renamed into the name of one of its shadows in src/alter.c,
-      src/build.c, src/sqliteInt.h.
-    - CVE-2020-13631
-  * SECURITY UPDATE: NULL pointer dereference
-    - debian/patches/CVE-2020-13632.patch: fix issue in
-      ext/fts3/fts3_snippet.c, test/fts3matchinfo2.test.
-    - CVE-2020-13632
+  * New upstream release.
+  * Remove sqlite3_fts3_may_be_corrupt@Base and
+    sqlite3_fts5_may_be_corrupt@Base symbols as no longer part of the library.
 
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 08 Jun 2020 08:43:24 -0400
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 21 Jun 2021 19:45:18 +0200
+
+sqlite3 (3.35.5-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Remove backported patches.
+  * Remove sqlite3_unsupported_selecttrace@Base symbol as no longer part of
+    the library.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 23 May 2021 08:06:14 +0200
+
+sqlite3 (3.34.1-3) unstable; urgency=medium
+
+  * Backport upstream fix for an issue with the LIKE operator when it
+    includes the "ESCAPE '_'" clause.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 24 Feb 2021 18:19:48 +0100
+
+sqlite3 (3.34.1-2) unstable; urgency=medium
+
+  * Backport upstream fix for incorrect optimization of IN operator.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 13 Feb 2021 16:22:26 +0100
+
+sqlite3 (3.34.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add upstream metadata.
+  * Update watch file.
+  * Update packaging bits.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 20 Jan 2021 18:40:44 +0100
+
+sqlite3 (3.34.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update patches to apply clean.
+  * Update libsqlite3-0 symbols.
+  * Update debhelper level to 13 .
+  * Update Standards-Version to 4.5.1 .
+
+  [ Pino Toscano <pino@debian.org> ]
+  * Don't ship .la files (closes: #968488).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 04 Dec 2020 22:11:24 +0100
+
+sqlite3 (3.33.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update libsqlite3-0 symbols.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 15 Aug 2020 16:40:06 +0200
+
+sqlite3 (3.32.3-1) unstable; urgency=medium
+
+  * New upstream release:
+    - better fix for CVE-2020-13871: use-after-free in resetAccumulator() in
+      select.c because the parse tree rewrite for window functions is too
+      late.
+  * Remove sqlite3SelectTrace@Base symbol as no longer part of the library.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 20 Jun 2020 17:04:00 +0200
+
+sqlite3 (3.32.2-2) unstable; urgency=high
+
+  * Backport upstream security fix for CVE-2020-13871: use-after-free in
+    resetAccumulator() in select.c because the parse tree rewrite for window
+    functions is too late.
+  * Update libsqlite3-0 symbols.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 06 Jun 2020 20:00:23 +0200
+
+sqlite3 (3.32.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 06 Jun 2020 08:57:49 +0200
+
+sqlite3 (3.32.1-2) unstable; urgency=medium
+
+  * Set LC_ALL to C.UTF-8 for lynx to generate changelog (closes: #961940).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 01 Jun 2020 07:23:26 +0200
+
+sqlite3 (3.32.1-1) unstable; urgency=high
+
+  * New upstream release, including two security fixes.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 25 May 2020 19:07:13 +0200
+
+sqlite3 (3.32.0-2) unstable; urgency=medium
+
+  * Generate upstream changelog without links (closes: #961450).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 25 May 2020 06:56:10 +0200
+
+sqlite3 (3.32.0-1) unstable; urgency=medium
+
+  * New upstream release, fixes CVE-2020-11656.
+  * Remove backported patches.
+  * Generate plain text upstream changelog (closes: #959983).
+  * Update libsqlite3-0 symbols.
+
+  [ Vagrant Cascadian <vagrant@reproducible-builds.org> ]
+  * Pass SHELL=/bin/sh to configure, to ensure reproducible builds regardless
+    of the setting of the SHELL environment variable (closes: #949341).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 24 May 2020 11:47:32 +0200
+
+sqlite3 (3.31.1-5) unstable; urgency=high
+
+  * Backport upstream security fix for CVE-2020-11655: denial of service
+    (segmentation fault) via a malformed window-function query.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 13 Apr 2020 10:21:16 +0000
 
 sqlite3 (3.31.1-4) unstable; urgency=medium
 
@@ -1562,11 +1645,6 @@ sqlite3 (3.0.8-1) unstable; urgency=low
     - Now packaged as a new source package, since SQLite 3
       is incompatible (database- and API-wise) with SQLite 2.
     - Remove debian/lemon.html, this is now shipped by upstream in doc/.
-    - Adapted manpage for 3.0 (thanks to Laszlo 'GCS' Boszormeny).
+    - Adapted manpage for 3.0 (thanks to Laszlo 'GCS' Boszormenyi).
 
  -- Andreas Rottmann <rotty@debian.org>  Sun,  7 Nov 2004 13:49:52 +0100
-sqlite3 (3.5.8-3) unstable; urgency=low
-
-  * Link.
-
- -- root <gcs@debian.hu>  Sat, 03 May 2008 09:33:37 +0200
